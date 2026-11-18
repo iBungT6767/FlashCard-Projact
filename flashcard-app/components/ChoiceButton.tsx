@@ -6,17 +6,18 @@ type ChoiceButtonProps ={
     onSelect:(id:number) => void;
     isCorrect:boolean;
     isWrong:boolean;
+    disabled:boolean;
 };
 
-export function ChoiceButton({choice,onSelect,isCorrect,isWrong}:ChoiceButtonProps){
-    let buttonColor = "hover:bg-gray-100";
+export function ChoiceButton({choice,onSelect,isCorrect,isWrong,disabled}:ChoiceButtonProps){
+    let buttonColor = "disabled:hover:bg-white hover:bg-gray-100";
     if (isCorrect) {
         buttonColor = "bg-green-500 text-white";
     }
     else if (isWrong){
         buttonColor = "bg-red-500 text-white";
     }
-    return(<button type="button" onClick={() => onSelect(choice.id)} className={`w-full border rounded-lg p-4  text-left ${buttonColor}`}>
+    return(<button type="button" disabled={disabled} onClick={() => onSelect(choice.id)} className={`w-full border rounded-lg p-4  text-left ${buttonColor}`}>
         {choice.text}
         
     </button>

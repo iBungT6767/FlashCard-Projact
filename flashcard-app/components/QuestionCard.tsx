@@ -31,6 +31,7 @@ export function QuestionCard ({question}:QuestionCardProps){
                 onSelect={handleSelect}
                 isCorrect={isCorrect}
                 isWrong={isWrong}
+                disabled={hasAnswer}
                 />
             );
         })}
