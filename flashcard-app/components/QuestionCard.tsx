@@ -9,18 +9,31 @@ type QuestionCardProps ={
 };
 
 export function QuestionCard ({question}:QuestionCardProps){
-    const handSlect = (id:number) => {
-        setSlectedId(id);
+    const [selectedId, setSelectedId] = useState<number|null>(null);
+
+    const handleSelect = (id:number) => {
+        setSelectedId(id);
     };
-    const [selectId, setSlectedId] = useState<number|null>(null);
+    
     return(
     <div className="flex flex-col gap-2">
-        <Flashcard card={question}></Flashcard>
+        <Flashcard card={question}/>
         <h1>กรุณาเลือกคำตอบ</h1>
-        {question.choices.map((choice) => (
-            <ChoiceButton key={choice.id} choice={choice} onSelect={handSlect}/>
-        ))}
+        {question.choices.map((choice) => {
+            const hasAnswer = selectedId !== null;
+            const isSelected = selectedId === choice.id;
+            const isCorrect = hasAnswer && choice.id === question.correctChoiceId;
+            const isWrong = isSelected && !isCorrect;
+            return(
+            <ChoiceButton 
+                key={choice.id} 
+                choice={choice} 
+                onSelect={handleSelect}
+                isCorrect={isCorrect}
+                isWrong={isWrong}
+                />
+            );
+        })}
     </div>
     );
 }
-

@@ -1,7 +1,7 @@
 import type { Question } from "@/types/index";
 
 export const question1: Question = {
-    id: 1,
+  id: 1,
   english: "Egg",
   thai: "ไข่",
   difficulty: 1,
@@ -13,5 +13,20 @@ export const question1: Question = {
     { id: 4, text: "ราคาถูก" },
     { id: 5, text: "ปืน" },
   ],
-  correctChoiceId: 1,
+  correctChoiceId: 1
+};
+export const question2: Question ={
+  id:2,
+  english:"Book",
+  thai:"หนังสือ",
+  difficulty:2,
+  example:"I have a book",
+  choices:[
+    { id: 1, text: "ไข่" },
+    { id: 2, text: "หนังสือ" },
+    { id: 3, text: "แมว" },
+    { id: 4, text: "ราคาถูก" },
+    { id: 5, text: "ปืน" },
+  ],
+  correctChoiceId:2
 };
