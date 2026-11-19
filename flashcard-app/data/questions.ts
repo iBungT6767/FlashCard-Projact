@@ -30,3 +30,22 @@ export const question2: Question ={
   ],
   correctChoiceId:2
 };
+export const question3: Question ={
+  id:3,
+  english:"Cat",
+  thai:"แมว",
+  difficulty:1,
+  choices:[
+    { id: 1, text: "ไข่" },
+    { id: 2, text: "หนังสือ" },
+    { id: 3, text: "แมว" },
+    { id: 4, text: "ราคาถูก" },
+    { id: 5, text: "ปืน" },
+  ],
+  correctChoiceId:3
+};
+export const questions:Question[]=[
+  question1,
+  question2,
+  question3
+];
