@@ -2,27 +2,22 @@
 import type { Question } from "@/types/index";
 import  { Flashcard } from "./Flashcard";
 import { ChoiceButton } from "./ChoiceButton";
-import { useState } from "react";
 
 
 type QuestionCardProps ={
     question:Question;
+    selectedId:number | null;
+    onSelect:(id:number) => void;
 };
 
-export function QuestionCard ({question}:QuestionCardProps){
-    const [selectedId, setSelectedId] = useState<number|null>(null);
-
-    const handleSelect = (id:number) => {
-        setSelectedId(id);
-    };
+export function QuestionCard ({question,selectedId,onSelect}:QuestionCardProps){
+    const hasAnswer = selectedId !== null;
     const isAnswerCorrect = selectedId === question.correctChoiceId;
     return(
     <div className="flex flex-col gap-2">
         <Flashcard card={question}/>
         <h2>กรุณาเลือกคำตอบ</h2>
         {question.choices.map((choice) => {
-            
-            const hasAnswer = selectedId !== null;
             const isSelected = selectedId === choice.id;
             const isCorrect = hasAnswer && choice.id === question.correctChoiceId;
             const isWrong = isSelected && !isCorrect;
@@ -30,7 +25,7 @@ export function QuestionCard ({question}:QuestionCardProps){
             <ChoiceButton 
                 key={choice.id} 
                 choice={choice} 
-                onSelect={handleSelect}
+                onSelect={onSelect}
                 isCorrect={isCorrect}
                 isWrong={isWrong}
                 disabled={hasAnswer}

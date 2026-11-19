@@ -1,6 +1,7 @@
 import { QuestionCard } from "@/components/QuestionCard"
 import { question1 } from "@/data/questions"
 import { QuizGame } from "@/components/QuizGame"
+import { RatingButton } from "@/components/RatingButtons"
 
 
 export default function Home(){
