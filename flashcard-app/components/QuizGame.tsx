@@ -3,7 +3,7 @@ import { useState } from "react";
 import type { AnswerRecord ,Rating } from "@/types";
 import { questions } from "@/data/questions";
 import { QuestionCard } from "./QuestionCard";
-import { RatingButtons } from "./RatingButtons";
+import { RatingButton } from "./RatingButtons";
 import { correctRatio } from "@/lib/stats";
 
 export function QuizGame(){
@@ -57,7 +57,7 @@ export function QuizGame(){
             <QuestionCard question={currentQuestion} selectedId={selectedId} onSelect={setSelectedId}/>
             {selectedId !== null && (
                 <div className="mt-4">
-                    <RatingButtons onRate={handleRate}/>
+                    <RatingButton onRate={handleRate}/>
                 </div>
             )}
             <p className="mt-4">ข้อที่ {currentIndex+1}/{questions.length}</p>
