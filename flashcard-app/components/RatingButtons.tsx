@@ -6,7 +6,7 @@ type RatingButtonProps ={
     onRate:(rating:Rating) => void;
 } ;
 
-export function RatingButton ({onRate}:RatingButtonProps){
+export function RatingButtons ({onRate}:RatingButtonProps){
     return(
         <div className="flex flex-wrap gap-2">
             {RATINGS.map((rating) =>(
